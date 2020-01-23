@@ -1258,7 +1258,7 @@ var security = (function () {
     var addAuthSuccess = new processor.AddFields({
         fields: {
             "event.category": "authentication",
-            "event.type": "authentication_success",
+            "event.type": "access",
             "event.outcome": "success",
         },
         target: "",
@@ -1267,7 +1267,7 @@ var security = (function () {
     var addAuthFailed = new processor.AddFields({
         fields: {
             "event.category": "authentication",
-            "event.type": "authentication_failure",
+            "event.type": "access",
             "event.outcome": "failure",
         },
         target: "",
@@ -1365,7 +1365,7 @@ var security = (function () {
         .Add(addActionDesc)
         .Add(function(evt) {
             evt.Put("event.category", "process");
-            evt.Put("event.type", "process_start");
+            evt.Put("event.type", "start");
         })
         .Build();
 
@@ -1375,7 +1375,7 @@ var security = (function () {
         .Add(addActionDesc)
         .Add(function(evt) {
             evt.Put("event.category", "process");
-            evt.Put("event.type", "process_end");
+            evt.Put("event.type", "start");
         })
         .Build();
 
